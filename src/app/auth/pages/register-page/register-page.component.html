@@ -1,1 +1,87 @@
-<p>register-page works!</p>
+<div class="container">
+    <div class="header-container">
+        <div class="title-container">
+            <h1 class="title">Create an account</h1>
+            <p class="text-sm">Enter your information to get started</p>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <form>
+            <div class="container-input-button-form">
+                <div class="input-container">
+                    <input class="input" id="name" placeholder="Enter your name" required="" />
+                </div>
+                <div class="input-container">
+                    <input class="input" id="email" placeholder="Enter your email" required="" />
+                </div>
+                <div class="space-y-2 relative">
+                    <input
+                        class="input"
+                        id="password"
+                        placeholder="Enter your password"
+                        required=""
+                        type="password"
+                    />
+                </div>
+                <div class="space-y-2 relative">
+                    <input
+                        class="input"
+                        id="confirm-password"
+                        placeholder="Confirm your password"
+                        required=""
+                        type="password"
+                    />
+                </div>
+                <div class="space-y-2 relative">
+                    <input
+                        class="input"
+                        id="charge"
+                        placeholder="Enter your charge"
+                        required=""
+                    />
+                </div>
+                <div class="space-y-2 relative">
+                    <input
+                        class="input"
+                        id="username"
+                        placeholder="Enter your username"
+                        required=""
+                    />
+                </div>
+                <div class="space-y-2 relative">
+                    <input
+                        class="input"
+                        id="department"
+                        placeholder="Enter your department"
+                        required=""
+                    />
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label
+                        class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 leading-none"
+                        for="terms">
+                        I agree to the
+                        <a class="underline" href="#" rel="ugc">
+                            terms and conditions
+                        </a>
+                    </label>
+                </div>
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                >
+                    Sign Up
+                </button>
+                <div class="mt-4 text-center text-sm">
+                    Already have an account?
+                    <a class="underline" href="/auth/login">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </form>        
+    </div>
+
+</div>
