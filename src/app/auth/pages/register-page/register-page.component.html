@@ -7,69 +7,84 @@
     </div>
 
     <div class="form-container">
-        <form>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocmplete="off">
             <div class="container-input-button-form">
                 <div class="input-container">
-                    <input class="input" id="name" placeholder="Enter your name" required="" />
+                    <input
+                        formControlName="username"
+                        class="input"
+                        placeholder="Enter your name"
+                    />
+                    <span *ngIf="isValidfield('username')" class="form-text text-danger">
+                        Debe de ser en formato de nombre y apellido
+                    </span>
                 </div>
                 <div class="input-container">
-                    <input class="input" id="email" placeholder="Enter your email" required="" />
+                    <input 
+                            formControlName="email"
+                            class="input" 
+                            placeholder="Enter your email" 
+                    />
+                    <span *ngIf="isValidfield('email')" class="form-text text-danger">
+                        Email no válido
+                    </span>
                 </div>
-                <div class="space-y-2 relative">
+                <div class="input-container">
                     <input
+                        formControlName="password"
                         class="input"
-                        id="password"
                         placeholder="Enter your password"
-                        required=""
                         type="password"
                     />
+                    <span *ngIf="isValidfield('password')" class="form-text text-danger">
+                   La contraseña debe de ser mayor de 6 caracteres.
+              </span>
                 </div>
-                <div class="space-y-2 relative">
+                <!-- <div class="input-container">
                     <input
+                        formControlName="confirmPassword"
                         class="input"
-                        id="confirm-password"
                         placeholder="Confirm your password"
-                        required=""
                         type="password"
                     />
-                </div>
-                <div class="space-y-2 relative">
+                    <span *ngIf="isValidfield('confirmPassword')" class="form-text text-danger">
+                        Las contraseñas deben ser iguales
+                    </span>
+                </div> -->
+                <div class="input-container">
                     <input
+                        formControlName="charge"
                         class="input"
-                        id="charge"
                         placeholder="Enter your charge"
-                        required=""
                     />
+                    <span *ngIf="isValidfield('charge')" class="form-text text-danger">
+                        ingrese su cargo
+                    </span>
                 </div>
-                <div class="space-y-2 relative">
+                
+                <div class="input-container">
                     <input
+                        formControlName="departament"
                         class="input"
-                        id="username"
-                        placeholder="Enter your username"
-                        required=""
-                    />
-                </div>
-                <div class="space-y-2 relative">
-                    <input
-                        class="input"
-                        id="department"
                         placeholder="Enter your department"
-                        required=""
                     />
+                    <span *ngIf="isValidfield('departament')" class="form-text text-danger">
+                        ingrese su area
+                    </span>
                 </div>
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label
-                        class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 leading-none"
+                        class="form-check-label text-sm"
                         for="terms">
                         I agree to the
                         <a class="underline" href="#" rel="ugc">
                             terms and conditions
                         </a>
                     </label>
-                </div>
+                </div> -->
                 <button
-                    class="btn btn-primary"
+                    class="btn btn-primary mt-4" 
                     type="submit"
                 >
                     Sign Up
