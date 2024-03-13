@@ -46,6 +46,7 @@
 }
 .input-container{
     position: relative; 
+    width: 19.063rem;
 }
 .input{
     margin-bottom: 0.5rem;
@@ -58,11 +59,27 @@
     padding-bottom: 0.5rem; 
     font-size: 0.875rem;
     line-height: 1.25rem; 
-
+    padding-left: 0.7rem;
+    padding-right: 0.7rem; 
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.15s ease;
 }
-/* :hover {
+.input:focus{
+    outline: none;
     box-shadow: 0 4px 6px -1px rgba(11, 72, 238, 0.1), 0 2px 4px -1px rgba(22, 0, 10, 0.637); 
-} */
+}
+.span{
+    animation: appear 1s forwards
+}
+@keyframes appear {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
 .form-check{
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;

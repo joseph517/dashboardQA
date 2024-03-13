@@ -15,21 +15,21 @@ export class AuthService {
     public firstNameAndLastnamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
     public emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
-    // public isFieldOneEquealFieldTwo(field1: string, field2: string){
+    public isFieldOneEquealFieldTwo(field1: string, field2: string){
 
-    //     return ( formGroup : FormGroup ):ValidationErrors | null => {
+        return ( formGroup : FormGroup ):ValidationErrors | null => {
     
-    //       const fieldValue1 = formGroup.get(field1)?.value
-    //       const fieldValue2 = formGroup.get(field2)?.value
+          const fieldValue1 = formGroup.get(field1)?.value
+          const fieldValue2 = formGroup.get(field2)?.value
     
-    //       if (fieldValue1 != fieldValue2) {
-    //         formGroup.get(field2)?.setErrors({notEqual: true})
-    //         return {notEqual: true}
-    //       }
-    //       formGroup.get(field2)?.setErrors(null)
-    //       return null
-    //     }
-    //   }
+          if (fieldValue1 != fieldValue2) {
+            formGroup.get(field2)?.setErrors({notEqual: true})
+            return {notEqual: true}
+          }
+          formGroup.get(field2)?.setErrors(null)
+          return null
+        }
+      }
 
     /**
      * Check if a field in a form is valid.

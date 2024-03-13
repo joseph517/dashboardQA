@@ -24,7 +24,7 @@ export class RegisterPageComponent {
     username: ['', [Validators.required, Validators.pattern(this.authService.firstNameAndLastnamePattern)]],
     departament: ['', [Validators.required]],
   },{
-    // validators: this.authService.isFieldOneEquealFieldTwo('password', 'confirmPassword')
+    validators: this.authService.isFieldOneEquealFieldTwo('password', 'confirmPassword')
   });
 
   isValidfield( field: string ) {
@@ -48,7 +48,6 @@ export class RegisterPageComponent {
 
     
     console.log('paut', payLoad);
-    console.log('myForm', this.myForm.value);
 
     this.authService.RegisterUser(payLoad).subscribe(
       {

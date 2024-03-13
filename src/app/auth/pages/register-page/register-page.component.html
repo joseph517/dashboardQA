@@ -15,7 +15,7 @@
                         class="input"
                         placeholder="Enter your name"
                     />
-                    <span *ngIf="isValidfield('username')" class="form-text text-danger">
+                    <span *ngIf="isValidfield('username')" class="span form-text text-danger">
                         Debe de ser en formato de nombre y apellido
                     </span>
                 </div>
@@ -25,7 +25,7 @@
                             class="input" 
                             placeholder="Enter your email" 
                     />
-                    <span *ngIf="isValidfield('email')" class="form-text text-danger">
+                    <span *ngIf="isValidfield('email')" class="span form-text text-danger">
                         Email no válido
                     </span>
                 </div>
@@ -36,28 +36,28 @@
                         placeholder="Enter your password"
                         type="password"
                     />
-                    <span *ngIf="isValidfield('password')" class="form-text text-danger">
+                    <span *ngIf="isValidfield('password')" class="span form-text text-danger">
                    La contraseña debe de ser mayor de 6 caracteres.
               </span>
                 </div>
-                <!-- <div class="input-container">
+                <div class="input-container">
                     <input
                         formControlName="confirmPassword"
                         class="input"
                         placeholder="Confirm your password"
                         type="password"
                     />
-                    <span *ngIf="isValidfield('confirmPassword')" class="form-text text-danger">
+                    <span *ngIf="isValidfield('confirmPassword')" class="span form-text text-danger">
                         Las contraseñas deben ser iguales
                     </span>
-                </div> -->
+                </div>
                 <div class="input-container">
                     <input
                         formControlName="charge"
                         class="input"
                         placeholder="Enter your charge"
                     />
-                    <span *ngIf="isValidfield('charge')" class="form-text text-danger">
+                    <span *ngIf="isValidfield('charge')" class="span form-text text-danger">
                         ingrese su cargo
                     </span>
                 </div>
@@ -68,7 +68,7 @@
                         class="input"
                         placeholder="Enter your department"
                     />
-                    <span *ngIf="isValidfield('departament')" class="form-text text-danger">
+                    <span *ngIf="isValidfield('departament')" class="span form-text text-danger">
                         ingrese su area
                     </span>
                 </div>

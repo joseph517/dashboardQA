@@ -1,1 +1,50 @@
-<p>login-page works!</p>
+<div class="container">
+    
+
+    <div class="form-container">
+        <div class="header-container">
+            <div class="title-container">
+                <h1 class="title">Login In</h1>
+            </div>
+        </div>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocmplete="off">
+            <div class="container-input-button-form">
+                <div class="input-container">
+                    <input 
+                            formControlName="email"
+                            class="input" 
+                            placeholder="Enter your email" 
+                    />
+                    <span *ngIf="isValidfield('email')" class="span form-text text-danger">
+                        Email no válido
+                    </span>
+                </div>
+                <div class="input-container">
+                    <input
+                        formControlName="password"
+                        class="input"
+                        placeholder="Enter your password"
+                        type="password"
+                    />
+                    <span *ngIf="isValidfield('password')" class=" span form-text text-danger">
+                   La contraseña debe de ser mayor de 6 caracteres.
+              </span>
+                </div>
+            
+                <button
+                    class="btn btn-primary mt-4" 
+                    type="submit"
+                >
+                    Sign Up
+                </button>
+                <div class="mt-4 text-center text-sm">
+                    dont have an account?
+                    <a class="underline" href="/auth/register">
+                        Register
+                    </a>
+                </div>
+            </div>
+        </form>        
+    </div>
+
+</div>
