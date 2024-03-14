@@ -1,4 +1,5 @@
 export interface User {
+    headers: any;
     msg:  string;
     user: UserClass;
 }
@@ -19,4 +20,9 @@ export interface UserRegister {
     username:    string;
     departament: string;
     charge:      string;
+}
+
+export interface UserLogin {
+    email:    string;
+    password: string;
 }

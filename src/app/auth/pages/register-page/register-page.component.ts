@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService as AuthService } from '../../services/auth.service';
-import { UserRegister } from '../interface/register.interface';
+import { UserRegister } from '../../interface/register.interface';
 
 
 @Component({
@@ -33,10 +33,13 @@ export class RegisterPageComponent {
   }
 
   onSubmit(): void {
-    // if (!this.myForm.valid) {
-    //   console.log('Formulario no válido');
-    //   return;
-    // }
+    if (!this.myForm.valid) {
+      console.log('Formulario no válido');
+      return;
+    }
+
+    console.log(this.myForm.value);
+    
 
     const payLoad: UserRegister = {
       email: this.myForm.get('email')?.value,
@@ -45,14 +48,13 @@ export class RegisterPageComponent {
       username: this.myForm.get('username')?.value,
       departament: this.myForm.get('departament')?.value
     }
-
+    console.log(payLoad);
     
-    console.log('paut', payLoad);
-
     this.authService.RegisterUser(payLoad).subscribe(
       {
         next: (resp) => {
           console.log('hola', resp.msg);
+          this.myForm.reset();
           
         },
         error: (error) => {

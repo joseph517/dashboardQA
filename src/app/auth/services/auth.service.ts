@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, catchError, tap } from 'rxjs';
-import { User, UserRegister } from '../pages/interface/register.interface';
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { Observable, catchError, map, tap } from 'rxjs';
+import { User, UserLogin, UserRegister } from '../interface/register.interface';
+import { Token } from '@angular/compiler';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -59,6 +60,27 @@ export class AuthService {
             })
         );
 
+    }
+
+    LoginUser(form: UserLogin): Observable<string | null>{
+
+        return this.http.post<any>(`${this.url}/login`, form)
+        .pipe(
+            tap(response => console.log('Response:', response)), 
+
+            map(resp => {
+                
+                const token = resp.headers.get('Authorization');
+                console.log(token);
+                
+                if( token ) {
+                    localStorage.setItem('token', token);
+                    return token;
+                }
+                return null;
+            })
+        )
+        
     }
     
 }
