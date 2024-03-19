@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService as AuthService } from '../../services/auth.service';
-import { UserRegister } from '../../interface/register.interface';
+import { UserRegister } from '../../interface/user.interface';
 
 
 @Component({
@@ -48,7 +48,6 @@ export class RegisterPageComponent {
       username: this.myForm.get('username')?.value,
       departament: this.myForm.get('departament')?.value
     }
-    console.log(payLoad);
     
     this.authService.RegisterUser(payLoad).subscribe(
       {

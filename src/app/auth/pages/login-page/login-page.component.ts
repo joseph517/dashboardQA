@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { AuthService } from '../../services/auth.service';
-import { UserLogin } from '../../interface/register.interface';
+import { UserLogin } from '../../interface/user.interface';
+import { tap } from 'rxjs';
+
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +16,7 @@ export class LoginPageComponent {
 
   constructor(
     private fb: FormBuilder,
-
+    private router: Router,
     private authService: AuthService
   ) { }
 
@@ -33,9 +37,10 @@ export class LoginPageComponent {
     }
 
     this.authService.LoginUser(payLoad).subscribe(
-      
+      response  => {
+        this.router.navigate(['/user/dashboard']);
+      }
     )
-    console.log(this.myForm.value);
 
   }
 

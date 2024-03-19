@@ -26,3 +26,22 @@ export interface UserLogin {
     email:    string;
     password: string;
 }
+
+
+export interface GetToken {
+    msg:          string;
+    access_token: string;
+    data:         Data;
+}
+
+export interface Data {
+    id:          number;
+    email:       string;
+    username:    string;
+    role:        null;
+    createdAt:   Date;
+    updatedAt:   Date;
+    departament: string;
+    charge:      string;
+    tasks:       any[];
+}
