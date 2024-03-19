@@ -32,36 +32,54 @@ export class RegisterPageComponent {
     return this.authService.isValidField(this.myForm, field);
   }
 
-  onSubmit(): void {
-    if (!this.myForm.valid) {
-      console.log('Formulario no válido');
-      return;
-    }
+  // onSubmit(): void {
+  //   if (!this.myForm.valid) return;
 
-    console.log(this.myForm.value);
+  //   const payLoad: UserRegister = this.myForm.getRawValue();
+  //   console.log(payLoad);
     
+    
+  //   this.authService.RegisterUser(payLoad).subscribe(
+  //     resp => {
+  //       console.log(resp);
+        
+  //       console.log('hola', resp.msg);
+  //       this.myForm.reset();
+  //     },
+  //     error => console.log('error', error)
+  //   );
+  //   this.myForm.markAllAsTouched();
+  //   }
 
-    const payLoad: UserRegister = {
-      email: this.myForm.get('email')?.value,
-      password: this.myForm.get('password')?.value,
-      charge: this.myForm.get('charge')?.value,
-      username: this.myForm.get('username')?.value,
-      departament: this.myForm.get('departament')?.value
-    }
-    
-    this.authService.RegisterUser(payLoad).subscribe(
-      {
-        next: (resp) => {
-          console.log('hola', resp.msg);
-          this.myForm.reset();
-          
-        },
-        error: (error) => {
-          console.log('error', error);
-          
-        }
+
+    onSubmit(): void {
+      if (!this.myForm.valid) {
+        console.log('Formulario no válido');
+        return;
       }
-    )
-    this.myForm.markAllAsTouched();
-  }
+  
+      const payLoad: UserRegister = {
+        email: this.myForm.get('email')?.value,
+        password: this.myForm.get('password')?.value,
+        charge: this.myForm.get('charge')?.value,
+        username: this.myForm.get('username')?.value,
+        departament: this.myForm.get('departament')?.value
+      }
+      
+      this.authService.RegisterUser(payLoad).subscribe(
+        {
+          next: (resp) => {
+            console.log('hola', resp.msg);
+            this.myForm.reset();
+            
+          },
+          error: (error) => {
+            console.log('error', error);
+            
+          }
+        }
+      )
+      this.myForm.markAllAsTouched();
+    }
 }
+

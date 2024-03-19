@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from './auth/guards/auth.guards';
+import { PublicGuard } from './auth/guards/public.guards';
 
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    canActivate: [PublicGuard],
+    canMatch: [PublicGuard]
   },
   {
     path: 'user',
-    loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+    canMatch: [AuthGuard],
+    canActivate: [AuthGuard],
+
   },
   {
     path: '**',

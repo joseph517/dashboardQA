@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { Observable, catchError, map, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { GetToken, User, UserLogin, UserRegister } from '../interface/user.interface';
-import { Token } from '@angular/compiler';
+import { environment } from 'src/enviroments/enviroments';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-    private url: string = 'http://localhost:5390'
+    private url = environment.baseUrl
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private router: Router
     ) { }
 
 
@@ -75,5 +77,10 @@ export class AuthService {
         );
         
     }
-    
+
+    checkLogin(): Observable<boolean> {
+        if(!localStorage.getItem('token')) return of(false);
+
+        return of(!!localStorage.getItem('token'));
+    }
 }
