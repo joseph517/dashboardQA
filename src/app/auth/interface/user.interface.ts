@@ -20,6 +20,7 @@ export interface UserRegister {
     username:    string;
     departament: string;
     charge:      string;
+    role:        string;
 }
 
 export interface UserLogin {

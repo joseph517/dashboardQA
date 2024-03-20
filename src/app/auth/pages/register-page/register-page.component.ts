@@ -20,6 +20,7 @@ export class RegisterPageComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+    role: ['', [Validators.required]],
     charge: ['', [Validators.required]],
     username: ['', [Validators.required, Validators.pattern(this.authService.firstNameAndLastnamePattern)]],
     departament: ['', [Validators.required]],
@@ -62,6 +63,7 @@ export class RegisterPageComponent {
         email: this.myForm.get('email')?.value,
         password: this.myForm.get('password')?.value,
         charge: this.myForm.get('charge')?.value,
+        role: this.myForm.get('role')?.value,
         username: this.myForm.get('username')?.value,
         departament: this.myForm.get('departament')?.value
       }
