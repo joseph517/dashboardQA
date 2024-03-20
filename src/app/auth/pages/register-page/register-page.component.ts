@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService as AuthService } from '../../services/auth.service';
 import { UserRegister } from '../../interface/user.interface';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class RegisterPageComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   public myForm: FormGroup = this.fb.group({
@@ -73,11 +75,10 @@ export class RegisterPageComponent {
           next: (resp) => {
             console.log('hola', resp.msg);
             this.myForm.reset();
-            
+            this.router.navigate(['/auth/login']);
           },
           error: (error) => {
             console.log('error', error);
-            
           }
         }
       )

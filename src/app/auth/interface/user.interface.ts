@@ -1,4 +1,5 @@
 export interface User {
+    data: Data;
     headers: any;
     msg:  string;
     user: UserClass;

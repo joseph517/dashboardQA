@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Observable, catchError, map, of, tap } from 'rxjs';
+
 import { GetToken, User, UserLogin, UserRegister } from '../interface/user.interface';
 import { environment } from 'src/enviroments/enviroments';
-import { Router } from '@angular/router';
+import { UserService } from '../../users/services/user.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -71,7 +73,8 @@ export class AuthService {
             tap((resp) => {
                 console.log('Response:', resp.data.username);
                 localStorage.setItem('token', resp.access_token);
-                localStorage.setItem('user', JSON.stringify(resp.data));
+                // localStorage.setItem('user', JSON.stringify(resp.data));
+                localStorage.setItem('userID', String(resp.data.id));
                 
             })
         );
@@ -80,7 +83,6 @@ export class AuthService {
 
     checkLogin(): Observable<boolean> {
         if(!localStorage.getItem('token')) return of(false);
-
         return of(!!localStorage.getItem('token'));
     }
 }

@@ -1,41 +1,42 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { ActivatedRouteSnapshot, CanActivate, CanMatch, Route, UrlSegment, UrlTree, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable, retry, tap } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router } from '@angular/router';
+import { firstValueFrom} from 'rxjs'; 
+
+import { UserService } from 'src/app/users/services/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanMatch {
+export class AuthGuard implements CanActivate {
 
     constructor(
         private router: Router,
-        private authService: AuthService
+        private userService: UserService
     ){}
+   
 
-    private checkStatus(): Observable<boolean> {
-        return this.authService.checkLogin()
-        .pipe(
-            tap(
-                (resp) => {
+    async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
 
-                    if (!resp) {
-                        this.router.navigate(['auth/login']);
-                    }
-                }
-            )
-        )
-    }
+        let validToken : boolean = true;
 
-    canMatch(route: Route, segments: UrlSegment[]): boolean | Observable<boolean> {
-
-        return this.checkStatus();
+        try {
+            
+            const userResponse =  this.userService.getUserData()
+            await firstValueFrom(userResponse)
+            validToken = true
+            
+        } catch (error: any) {
+            console.log('error', error);
+            if(error.status === 401) {
+                validToken = false
+                localStorage.clear();
+                this.router.navigate(['auth/login']);
+            }
+            
+        }
         
-    }
-
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {
-
-        return this.checkStatus();
+        return validToken
     }
     
 }
