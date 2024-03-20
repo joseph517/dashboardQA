@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'shared-navbar',
@@ -8,13 +9,23 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent  {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+    ) { }
 
   @Input() username!: string;
 
   logout(): void{
-    localStorage.clear();
-    this.router.navigate(['/auth/login']);
+
+    this.authService.logout()
+    .subscribe((res) => {
+      console.log('res', res);
+      localStorage.clear();
+      this.router.navigate(['/auth/login']);
+
+    })
+
   }
 
  

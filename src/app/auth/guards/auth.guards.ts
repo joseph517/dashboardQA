@@ -21,6 +21,7 @@ export class AuthGuard implements CanActivate {
         let validToken : boolean = true;
 
         try {
+            console.log('entro');
             
             const userResponse =  this.userService.getUserData()
             await firstValueFrom(userResponse)

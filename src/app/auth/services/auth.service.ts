@@ -85,4 +85,13 @@ export class AuthService {
         if(!localStorage.getItem('token')) return of(false);
         return of(!!localStorage.getItem('token'));
     }
+
+    logout(): Observable<string>{
+
+        return this.http.get<string>(`${this.url}/logout`, {
+            headers: new HttpHeaders({
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            })
+        })
+    }
 }

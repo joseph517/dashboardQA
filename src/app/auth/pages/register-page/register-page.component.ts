@@ -35,26 +35,6 @@ export class RegisterPageComponent {
     return this.authService.isValidField(this.myForm, field);
   }
 
-  // onSubmit(): void {
-  //   if (!this.myForm.valid) return;
-
-  //   const payLoad: UserRegister = this.myForm.getRawValue();
-  //   console.log(payLoad);
-    
-    
-  //   this.authService.RegisterUser(payLoad).subscribe(
-  //     resp => {
-  //       console.log(resp);
-        
-  //       console.log('hola', resp.msg);
-  //       this.myForm.reset();
-  //     },
-  //     error => console.log('error', error)
-  //   );
-  //   this.myForm.markAllAsTouched();
-  //   }
-
-
     onSubmit(): void {
       if (!this.myForm.valid) {
         console.log('Formulario no válido');
